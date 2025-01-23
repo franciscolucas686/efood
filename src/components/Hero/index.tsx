@@ -1,10 +1,9 @@
 import Tag from '../Tag'
 import { Banner, Titulo } from './styles'
+import imageMassa from '../../assets/images/massa.png'
 
 const Hero = () => (
-  <Banner
-    style={{ backgroundImage: `url(https://via.placeholder.com/1500x280)` }}
-  >
+  <Banner style={{ backgroundImage: imageMassa }}>
     <div className="container">
       <Tag>Carioca</Tag>
       <Titulo>Comida Carioca</Titulo>

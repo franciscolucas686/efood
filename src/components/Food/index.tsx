@@ -1,17 +1,16 @@
 import Button from '../Button'
 import { Descricao, FoodCardContainer, Titulo, Image } from './style'
+import imagePizza from '../../assets/images/pizza.png'
 
 const FoodCard = () => (
   <FoodCardContainer>
-    <Image src="//placehold.it/316x167" alt="" />
+    <Image src={imagePizza} alt="Pizza" />
     <Titulo>Pizza Peperoni</Titulo>
     <Descricao>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, animi
       est. Nobis impedit pariatur neque saepe deserunt
     </Descricao>
-    <Button title={''} to={''}>
-      Acidionar ao Carrinho
-    </Button>
+    <Button title={''}>Acidionar ao Carrinho</Button>
   </FoodCardContainer>
 )
 

@@ -3,6 +3,7 @@ import Hero from '../../components/Hero'
 import FoodList from '../../components/FoodList'
 
 const PageRestaurant = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { id } = useParams()
 
   return (

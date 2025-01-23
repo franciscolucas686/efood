@@ -17,6 +17,7 @@ const RestaurantList = ({ restaurants }: Props) => (
           category={restaurant.category}
           info={restaurant.info}
           description={restaurant.description}
+          id={restaurant.id}
         />
       ))}
     </List>

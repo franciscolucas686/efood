@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 import { cores } from '../../style'
 import { TagContainer } from '../Tag/styles'
+import imageMassa from '../../assets/images/massa.png'
 
 export const Banner = styled.div`
   position: relative;
   display: block;
   height: 280px;
   width: 100%;
+  background-image: url(${imageMassa}); /* Define a imagem de fundo */
+  background-size: cover; /* Faz a imagem cobrir todo o espaço */
+  background-position: center; /* Centraliza a imagem */
 
   &::after {
     position: absolute;
@@ -20,7 +24,7 @@ export const Banner = styled.div`
   }
 
   .container {
-    z-index: 1;
+    z-index: 2;
     position: relative;
     display: flex;
     flex-direction: column;

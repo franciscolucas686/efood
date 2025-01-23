@@ -1,10 +1,12 @@
 import RestaurantList from '../../components/RestaurantList'
 import Restaurant from '../../models/Restaurant'
+import imageMassa from '../../assets/images/massa.png'
+import imageSushi from '../../assets/images/sushi.png'
 
 const destaques: Restaurant[] = [
   {
     id: 1,
-    image: '//placehold.it/472x250',
+    image: imageMassa,
     title: 'Comida Carioca',
     category: 'Destaque da semana',
     info: 'Carioca',
@@ -13,7 +15,7 @@ const destaques: Restaurant[] = [
   },
   {
     id: 2,
-    image: '//placehold.it/472x250',
+    image: imageSushi,
     title: 'Comida Mineira',
     category: 'Destaque da semana',
     info: 'Mineira',
@@ -22,7 +24,7 @@ const destaques: Restaurant[] = [
   },
   {
     id: 3,
-    image: '//placehold.it/472x250',
+    image: imageSushi,
     title: 'Comida Holandesa',
     category: 'Destaque da semana',
     info: 'Holandesa',
@@ -31,7 +33,7 @@ const destaques: Restaurant[] = [
   },
   {
     id: 4,
-    image: '//placehold.it/472x250',
+    image: imageSushi,
     title: 'Comida Americada',
     category: 'Destaque da semana',
     info: 'Americana',
@@ -40,7 +42,7 @@ const destaques: Restaurant[] = [
   },
   {
     id: 5,
-    image: '//placehold.it/472x250',
+    image: imageSushi,
     title: 'Comida Noroeguesa',
     category: 'Destaque da semana',
     info: 'Noroeguesa',
@@ -49,7 +51,7 @@ const destaques: Restaurant[] = [
   },
   {
     id: 6,
-    image: '//placehold.it/472x250',
+    image: imageMassa,
     title: 'Comida Canadense',
     category: 'Destaque da semana',
     info: 'Canadense',

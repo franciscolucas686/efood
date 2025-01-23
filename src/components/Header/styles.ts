@@ -18,6 +18,7 @@ export const HeaderContainer = styled.div`
 
 export const LogoContainer = styled.img`
   padding-top: 40px;
+  z-index: 1;
 `
 
 export const Titulo = styled.h1`
