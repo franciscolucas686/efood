@@ -11,4 +11,18 @@ export const ButtonLink = styled(Link)`
   text-align: center;
   display: inline-block;
   text-decoration: none;
+  cursor: pointer;
+`
+export const Btn = styled.button`
+  background-color: ${cores.rosaEscuro};
+  color: ${cores.rosaClaro};
+  padding: 4px 6px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  border: 2px solid ${cores.rosaClaro};
+  cursor: pointer;
+  border-radius: 6px;
 `

@@ -1,4 +1,4 @@
-import FoodCard from '../Food'
+import FoodCard from '../FoodCard'
 import { List } from './styles'
 
 const FoodList = () => (

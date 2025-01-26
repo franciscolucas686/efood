@@ -1,10 +1,10 @@
-import { ButtonLink } from './styles'
+import { Btn, ButtonLink } from './styles'
 
 export type Props = {
   title: string
   children: string
   onClick?: () => void
-  to?: string // Propriedade `to` opcional
+  to?: string
 }
 
 const Button = ({ title, children, onClick, to }: Props) => {
@@ -17,9 +17,9 @@ const Button = ({ title, children, onClick, to }: Props) => {
   }
 
   return (
-    <button onClick={onClick} title={title}>
+    <Btn onClick={onClick} title={title}>
       {children}
-    </button>
+    </Btn>
   )
 }
 

@@ -27,3 +27,9 @@ export const Titulo = styled.p`
   padding-bottom: 40px;
   font-weight: 900;
 `
+
+export const SocialIconsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+`

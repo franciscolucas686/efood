@@ -1,7 +1,7 @@
 import style from 'styled-components'
 import { cores } from '../../style'
 import { TagContainer } from '../Tag/styles'
-import { ButtonLink } from '../Button/styles'
+import { Btn } from '../Button/styles'
 
 export const Card = style.div`
   border: 2px solid ${cores.rosaEscuro};
@@ -12,7 +12,7 @@ export const Card = style.div`
     margin-right: 8px;
   }
 
-  ${ButtonLink} {
+  ${Btn} {
     margin-top: 16px;
   }
 `
