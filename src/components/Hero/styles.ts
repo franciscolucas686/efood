@@ -24,7 +24,7 @@ export const Banner = styled.div`
   }
 
   .container {
-    z-index: 2;
+    z-index: 1;
     position: relative;
     display: flex;
     flex-direction: column;
