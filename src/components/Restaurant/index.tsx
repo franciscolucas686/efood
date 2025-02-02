@@ -9,7 +9,7 @@ type Props = {
   image: string
   title: string
   category: string
-  info: string
+  info: boolean | string
   description: string
 }
 
@@ -23,16 +23,23 @@ const CardRestaurant = ({
 }: Props) => {
   const navigate = useNavigate()
 
+  const capitalizeFirstLetter = (text: string) => {
+    if (!text) return ''
+    return text.charAt(0).toUpperCase() + text.slice(1)
+  }
+
   const pageChangeId = () => {
     navigate(`/PageRestaurant/${id}`)
   }
 
   return (
     <Card>
-      <img src={image} alt={title} />
+      <img src={image} alt={`Imagem do restaurante ${title}`} />
       <Titulo>{title}</Titulo>
-      <Tag>{category}</Tag>
-      <Tag>{info}</Tag>
+      <Tag>{capitalizeFirstLetter(category)}</Tag>
+      <Tag className={!info ? 'no-padding' : ''}>
+        {info ? 'Destaque da semana' : ''}
+      </Tag>
       <Descrição>{description}</Descrição>
       <Button title="Saiba mais" onClick={pageChangeId}>
         Saiba mais

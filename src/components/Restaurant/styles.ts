@@ -15,6 +15,13 @@ export const Card = style.div`
   ${Btn} {
     margin-top: 16px;
   }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 217px;
+    object-fit: cover;
+  }
 `
 export const Titulo = style.h3`
   font-size: 16px;
