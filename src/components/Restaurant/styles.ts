@@ -7,6 +7,7 @@ export const Card = style.div`
   border: 2px solid ${cores.rosaEscuro};
   margin-top: 40px;
   padding: 8px;
+  cursor: pointer;
 
   ${TagContainer} {
     margin-right: 8px;

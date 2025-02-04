@@ -20,7 +20,9 @@ const Header = () => {
     <ImagemRestaurant>
       <HeaderContainerRestaurant>
         <ButtonContainer>
-          <Btn>Restaurantes</Btn>
+          <Link to="/">
+            <Btn>Restaurantes</Btn>
+          </Link>
           <Link to="/">
             <LogoContainer src={Logo} alt="logo" />
           </Link>

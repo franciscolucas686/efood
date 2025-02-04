@@ -8,27 +8,27 @@ import {
   Box,
   ButtonBox
 } from './styles'
-import { FoodCardProps } from '../FoodCard'
+import { CardapioRestaurant } from '../../pages/Home'
+import { formatPrice } from '../FoodList'
 
-const Modal = ({
-  food,
-  onClose
-}: {
-  food: FoodCardProps | null
+type ModalProps = {
+  food: CardapioRestaurant
   onClose: () => void
-}) => {
+}
+
+const Modal = ({ food, onClose }: ModalProps) => {
   if (!food) return null
 
   return (
     <ModalBox>
       <ModalContent className="container">
         <CloseButton onClick={onClose}>X</CloseButton>
-        <Image src={food.image} alt={food.title} />
+        <Image src={food.foto} alt={food.nome} />
         <Box>
-          <Titulo>{food.description}</Titulo>
+          <Titulo>{food.descricao}</Titulo>
           <ButtonBox>
             <Button>
-              {food.button} - {food.price}
+              {`Adicionar ao carrinho`} - {formatPrice(food.preco)}
             </Button>
           </ButtonBox>
         </Box>

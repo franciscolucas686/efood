@@ -15,6 +15,11 @@ export const FoodCardContainer = styled.div`
 `
 export const Image = styled.img`
   padding-bottom: 8px;
+  display: block;
+  width: 100%;
+  height: 167px;
+  object-fit: cover;
+  }
 `
 
 export const Titulo = styled.h3`

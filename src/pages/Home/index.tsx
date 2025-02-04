@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import RestaurantList from '../../components/RestaurantList'
-import Restaurant from '../Restaurant'
 
 export type Restaurant = {
   id: number
@@ -9,6 +8,15 @@ export type Restaurant = {
   tipo: string
   descricao: string
   capa: string
+  cardapio: CardapioRestaurant[]
+}
+
+export type CardapioRestaurant = {
+  id: number
+  foto: string
+  preco: number
+  nome: string
+  descricao: string
 }
 
 const Home = () => {
@@ -19,6 +27,11 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setRestaurants(data))
   }, [])
+
+  if (!restaurants) {
+    return <h3>Carregando...</h3>
+  }
+
   return (
     <>
       <RestaurantList restaurants={restaurants} />

@@ -8,7 +8,7 @@ export const Banner = styled.div`
   display: block;
   height: 280px;
   width: 100%;
-  background-image: url(${imageMassa}); /* Define a imagem de fundo */
+  background-image: ${imageMassa};
   background-size: cover; /* Faz a imagem cobrir todo o espaço */
   background-position: center; /* Centraliza a imagem */
 

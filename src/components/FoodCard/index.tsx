@@ -2,6 +2,7 @@ import Button from '../Button'
 import { Descricao, FoodCardContainer, Titulo, Image } from './style'
 
 export type FoodCardProps = {
+  id: number
   image: string
   title: string
   description: string

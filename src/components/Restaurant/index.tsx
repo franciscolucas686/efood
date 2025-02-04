@@ -13,6 +13,11 @@ type Props = {
   description: string
 }
 
+export const capitalizeFirstLetter = (text: string) => {
+  if (!text) return ''
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
 const CardRestaurant = ({
   id,
   image,
@@ -23,17 +28,12 @@ const CardRestaurant = ({
 }: Props) => {
   const navigate = useNavigate()
 
-  const capitalizeFirstLetter = (text: string) => {
-    if (!text) return ''
-    return text.charAt(0).toUpperCase() + text.slice(1)
-  }
-
   const pageChangeId = () => {
     navigate(`/PageRestaurant/${id}`)
   }
 
   return (
-    <Card>
+    <Card onClick={pageChangeId}>
       <img src={image} alt={`Imagem do restaurante ${title}`} />
       <Titulo>{title}</Titulo>
       <Tag>{capitalizeFirstLetter(category)}</Tag>

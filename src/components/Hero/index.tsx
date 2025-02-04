@@ -1,12 +1,17 @@
 import Tag from '../Tag'
 import { Banner, Titulo } from './styles'
-import imageMassa from '../../assets/images/massa.png'
+import { Restaurant } from '../../pages/Home'
+import { capitalizeFirstLetter } from '../Restaurant'
 
-const Hero = () => (
-  <Banner style={{ backgroundImage: imageMassa }}>
+type Props = {
+  restaurant: Restaurant
+}
+
+const Hero = ({ restaurant }: Props) => (
+  <Banner style={{ backgroundImage: `url(${restaurant.capa})` }}>
     <div className="container">
-      <Tag>Carioca</Tag>
-      <Titulo>Comida Carioca</Titulo>
+      <Tag>{capitalizeFirstLetter(restaurant.tipo)}</Tag>
+      <Titulo>{restaurant.titulo}</Titulo>
     </div>
   </Banner>
 )

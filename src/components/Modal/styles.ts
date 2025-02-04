@@ -46,7 +46,6 @@ export const CloseButton = styled.div`
 `
 export const Image = styled.img`
   height: 150px;
-  border-radius: 8px;
   padding-right: 20px;
 `
 

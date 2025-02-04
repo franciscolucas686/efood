@@ -1,64 +1,26 @@
-import FoodCard, { FoodCardProps } from '../FoodCard'
 import { List } from './styles'
 import { useState } from 'react'
-import imagePizza from '../../assets/images/pizza.png'
 import Modal from '../Modal'
+import { CardapioRestaurant } from '../../pages/Home'
+import FoodCard from '../FoodCard'
 
-const mock = [
-  {
-    image: imagePizza,
-    title: 'Pizza Peperoni',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, animiest. Nobis impedit pariatur neque saepe deserunt',
-    button: 'Adicionar ao Carrinho',
-    price: 'R$ 59,89'
-  },
-  {
-    image: imagePizza,
-    title: 'Pizza Peperoni',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, animiest. Nobis impedit pariatur neque saepe deserunt',
-    button: 'Adicionar ao Carrinho',
-    price: 'R$ 59,89'
-  },
-  {
-    image: imagePizza,
-    title: 'Pizza Peperoni',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, animiest. Nobis impedit pariatur neque saepe deserunt',
-    button: 'Adicionar ao Carrinho',
-    price: 'R$ 59,89'
-  },
-  {
-    image: imagePizza,
-    title: 'Pizza Peperoni',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, animiest. Nobis impedit pariatur neque saepe deserunt',
-    button: 'Adicionar ao Carrinho',
-    price: 'R$ 59,89'
-  },
-  {
-    image: imagePizza,
-    title: 'Pizza Peperoni',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, animiest. Nobis impedit pariatur neque saepe deserunt',
-    button: 'Adicionar ao Carrinho',
-    price: 'R$ 59,89'
-  },
-  {
-    image: imagePizza,
-    title: 'Pizza Peperoni',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora, animiest. Nobis impedit pariatur neque saepe deserunt',
-    button: 'Adicionar ao Carrinho',
-    price: 'R$ 59,89'
-  }
-]
+type Props = {
+  cardapio: CardapioRestaurant[]
+}
 
-const FoodList = () => {
-  const [selectedFood, setselectedFood] = useState<FoodCardProps | null>(null)
+export const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
+}
 
-  const handleOpenModal = (food: FoodCardProps) => {
+const FoodList = ({ cardapio }: Props) => {
+  const [selectedFood, setselectedFood] = useState<CardapioRestaurant | null>(
+    null
+  )
+
+  const handleOpenModal = (food: CardapioRestaurant) => {
     setselectedFood(food)
   }
 
@@ -69,15 +31,16 @@ const FoodList = () => {
   return (
     <div className="container">
       <List>
-        {mock.map((food, index) => (
+        {cardapio.map((food) => (
           <FoodCard
-            key={index}
-            image={food.image}
-            title={food.title}
-            description={food.description}
-            button={food.button}
-            price={food.price}
+            key={food.id}
+            image={food.foto}
+            title={food.nome}
+            description={food.descricao}
+            button={`Adicionar ao carrinho`}
+            price={formatPrice(food.preco)}
             onClick={() => handleOpenModal(food)}
+            id={0}
           />
         ))}
       </List>
