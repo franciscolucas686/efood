@@ -23,13 +23,13 @@ export const ModalBox = styled.div`
 `
 
 export const ModalContent = styled.div`
-  max-width: 960px;
+  max-width: 1024px;
+  height: 344px;
   position: relative;
   z-index: 1;
   background: ${cores.rosaEscuro};
-  padding: 20px;
-  height: 250px;
-  border-radius: 8px;
+  padding: 23px;
+
   position: relative;
   display: flex;
 `
@@ -45,31 +45,33 @@ export const CloseButton = styled.div`
   color: ${cores.branca}
 `
 export const Image = styled.img`
-  height: 210px;
-  width: 210px;
+  height: 280px;
+  width: 280px;
   margin-right: 20px;
   object-fit: cover;
 `
 
 export const Titulo = styled.h2`
-  margin-top: 10px;
   color: ${cores.branca};
-  font-size: 14px;
+  font-size: 18px;
+  margin-bottom: 16px;
 `
 
 export const Descricao = styled.p`
   font-size: 14px;
   color: ${cores.branca};
+  margin-bottom: 18px;
 `
 
 export const Porcao = styled.p`
   color: ${cores.branca};
+  font-size: 14px;
+  margin-bottom: 16px;
 `
 
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 `
 
 export const ButtonBox = styled.div`

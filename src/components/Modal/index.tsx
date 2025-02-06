@@ -23,7 +23,7 @@ const Modal = ({ food, onClose }: ModalProps) => {
 
   return (
     <ModalBox>
-      <ModalContent className="container">
+      <ModalContent>
         <CloseButton onClick={onClose}>X</CloseButton>
         <Image src={food.foto} alt={food.nome} />
         <Box>
