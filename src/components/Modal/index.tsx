@@ -6,7 +6,9 @@ import {
   Image,
   Titulo,
   Box,
-  ButtonBox
+  ButtonBox,
+  Descricao,
+  Porcao
 } from './styles'
 import { CardapioRestaurant } from '../../pages/Home'
 import { formatPrice } from '../FoodList'
@@ -25,7 +27,12 @@ const Modal = ({ food, onClose }: ModalProps) => {
         <CloseButton onClick={onClose}>X</CloseButton>
         <Image src={food.foto} alt={food.nome} />
         <Box>
-          <Titulo>{food.descricao}</Titulo>
+          <Titulo>{food.nome}</Titulo>
+          <Descricao>{food.descricao}</Descricao>
+          <Porcao>
+            {`Serve de `}
+            {food.porcao}
+          </Porcao>
           <ButtonBox>
             <Button>
               {`Adicionar ao carrinho`} - {formatPrice(food.preco)}

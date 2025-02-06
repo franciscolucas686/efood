@@ -1,17 +1,10 @@
 import styled from 'styled-components'
 import { cores } from '../../style'
-import { ButtonLink } from '../Button/styles'
 
 export const FoodCardContainer = styled.div`
   background-color: ${cores.rosaEscuro};
   padding: 8px;
   margin-bottom: 20px;
-
-  ${ButtonLink} {
-    background-color: ${cores.rosaClaro};
-    color: ${cores.rosaEscuro};
-    display: block;
-  }
 `
 export const Image = styled.img`
   padding-bottom: 8px;

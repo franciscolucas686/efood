@@ -17,6 +17,7 @@ export type CardapioRestaurant = {
   preco: number
   nome: string
   descricao: string
+  porcao: string
 }
 
 const Home = () => {

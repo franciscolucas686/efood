@@ -14,8 +14,8 @@ export const ButtonLink = styled(Link)`
   cursor: pointer;
 `
 export const Btn = styled.button`
-  background-color: ${cores.rosaEscuro};
-  color: ${cores.rosaClaro};
+  background-color: ${cores.rosaClaro};
+  color: ${cores.rosaEscuro};
   padding: 4px 6px;
   font-size: 14px;
   font-weight: bold;

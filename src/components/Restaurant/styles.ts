@@ -15,6 +15,8 @@ export const Card = style.div`
 
   ${Btn} {
     margin-top: 16px;
+    background-color: ${cores.rosaEscuro};
+    color:${cores.rosaClaro};
   }
 
   img {

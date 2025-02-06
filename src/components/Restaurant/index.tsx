@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-
-import Button from '../Button'
 import Tag from '../Tag'
 import { Card, Descrição, Titulo } from './styles'
+import { Btn } from '../Button/styles'
 
 type Props = {
   id: number
@@ -41,9 +40,9 @@ const CardRestaurant = ({
         {info ? 'Destaque da semana' : ''}
       </Tag>
       <Descrição>{description}</Descrição>
-      <Button title="Saiba mais" onClick={pageChangeId}>
+      <Btn title="Saiba mais" onClick={pageChangeId}>
         Saiba mais
-      </Button>
+      </Btn>
     </Card>
   )
 }

@@ -26,9 +26,9 @@ export const ModalContent = styled.div`
   max-width: 960px;
   position: relative;
   z-index: 1;
-  background:${cores.rosaEscuro};
+  background: ${cores.rosaEscuro};
   padding: 20px;
-  width: 500px:
+  height: 250px;
   border-radius: 8px;
   position: relative;
   display: flex;
@@ -45,8 +45,10 @@ export const CloseButton = styled.div`
   color: ${cores.branca}
 `
 export const Image = styled.img`
-  height: 150px;
-  padding-right: 20px;
+  height: 210px;
+  width: 210px;
+  margin-right: 20px;
+  object-fit: cover;
 `
 
 export const Titulo = styled.h2`
@@ -57,6 +59,11 @@ export const Titulo = styled.h2`
 
 export const Descricao = styled.p`
   font-size: 14px;
+  color: ${cores.branca};
+`
+
+export const Porcao = styled.p`
+  color: ${cores.branca};
 `
 
 export const Box = styled.div`
