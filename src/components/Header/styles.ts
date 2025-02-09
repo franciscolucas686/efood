@@ -36,7 +36,7 @@ export const HeaderContainerRestaurant = styled.div`
 `
 
 export const LogoContainer = styled.img`
-  z-index: 1;
+  z-index: 0;
 `
 
 export const Titulo = styled.h1`

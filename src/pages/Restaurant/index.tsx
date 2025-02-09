@@ -1,19 +1,15 @@
 import { useParams } from 'react-router-dom'
 import Hero from '../../components/Hero'
 import FoodList from '../../components/FoodList'
-import { useEffect, useState } from 'react'
-import { Restaurant } from '../Home'
+import { useGetRestaurantPageQuery } from '../../services/api'
+
+type CardapioParams = {
+  id: string
+}
 
 const PageRestaurant = () => {
-  const { id } = useParams()
-
-  const [restaurants, setRestaurants] = useState<Restaurant | null>(null)
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setRestaurants(res))
-  }, [id])
+  const { id } = useParams() as CardapioParams
+  const { data: restaurants } = useGetRestaurantPageQuery(id)
 
   if (!restaurants) {
     return <h3>Carregando...</h3>

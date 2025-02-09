@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 
 import Rotas from './routes'
 import { store } from './store'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Rotas />
         <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   )

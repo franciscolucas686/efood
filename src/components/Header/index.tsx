@@ -26,7 +26,7 @@ const Header = () => {
           <Link to="/">
             <LogoContainer src={Logo} alt="logo" />
           </Link>
-          <Btn>0 protuto(s) no carrinho</Btn>
+          <Btn>0 produto(s) no carrinho</Btn>
         </ButtonContainer>
       </HeaderContainerRestaurant>
     </ImagemRestaurant>
