@@ -1,8 +1,10 @@
 import { List } from './styles'
-import { useState } from 'react'
 import Modal from '../Modal'
 import { CardapioRestaurant } from '../../pages/Home'
 import FoodCard from '../FoodCard'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { closeModal, openModal } from '../../store/modal'
 
 type Props = {
   cardapio: CardapioRestaurant[]
@@ -16,16 +18,18 @@ export const formatPrice = (price: number) => {
 }
 
 const FoodList = ({ cardapio }: Props) => {
-  const [selectedFood, setselectedFood] = useState<CardapioRestaurant | null>(
-    null
+  const dispatch = useDispatch()
+
+  const { selectedFood, isOpen } = useSelector(
+    (state: RootReducer) => state.modal
   )
 
   const handleOpenModal = (food: CardapioRestaurant) => {
-    setselectedFood(food)
+    dispatch(openModal(food))
   }
 
   const handleCloseModal = () => {
-    setselectedFood(null)
+    dispatch(closeModal())
   }
 
   return (
@@ -44,7 +48,9 @@ const FoodList = ({ cardapio }: Props) => {
           />
         ))}
       </List>
-      {selectedFood && <Modal food={selectedFood} onClose={handleCloseModal} />}
+      {isOpen && selectedFood && (
+        <Modal food={selectedFood} onClose={handleCloseModal} />
+      )}
     </div>
   )
 }

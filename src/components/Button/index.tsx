@@ -6,19 +6,20 @@ export type Props = {
   children?: ReactNode
   onClick?: () => void
   to?: string
+  className?: string
 }
 
-const Button = ({ title, children, onClick, to }: Props) => {
+const Button = ({ title, children, onClick, to, className }: Props) => {
   if (to) {
     return (
-      <ButtonLink to={to} title={title}>
+      <ButtonLink to={to} title={title} className={className}>
         {children}
       </ButtonLink>
     )
   }
 
   return (
-    <Btn onClick={onClick} title={title}>
+    <Btn onClick={onClick} title={title} className={className}>
       {children}
     </Btn>
   )

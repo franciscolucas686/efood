@@ -11,10 +11,20 @@ import Logo from '../../assets/images/logo.svg'
 import { Link, useLocation } from 'react-router-dom'
 import { Btn } from '../Button/styles'
 
+import { open } from '../../store/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
 const Header = () => {
   const location = useLocation()
 
   const isCardRestaurantPage = location.pathname.includes('/PageRestaurant')
+
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const openCart = () => {
+    dispatch(open())
+  }
 
   return isCardRestaurantPage ? (
     <ImagemRestaurant>
@@ -26,7 +36,9 @@ const Header = () => {
           <Link to="/">
             <LogoContainer src={Logo} alt="logo" />
           </Link>
-          <Btn>0 produto(s) no carrinho</Btn>
+          <Btn onClick={() => openCart()}>
+            {items.length} produto(s) no carrinho
+          </Btn>
         </ButtonContainer>
       </HeaderContainerRestaurant>
     </ImagemRestaurant>

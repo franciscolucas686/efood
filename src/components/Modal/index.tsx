@@ -12,6 +12,8 @@ import {
 } from './styles'
 import { CardapioRestaurant } from '../../pages/Home'
 import { formatPrice } from '../FoodList'
+import { useDispatch } from 'react-redux'
+import { addFood, open } from '../../store/cart'
 
 type ModalProps = {
   food: CardapioRestaurant
@@ -19,6 +21,13 @@ type ModalProps = {
 }
 
 const Modal = ({ food, onClose }: ModalProps) => {
+  const dispatch = useDispatch()
+  const addToCart = () => {
+    dispatch(addFood(food))
+    dispatch(open())
+    onClose()
+  }
+
   if (!food) return null
 
   return (
@@ -34,7 +43,7 @@ const Modal = ({ food, onClose }: ModalProps) => {
             {food.porcao}
           </Porcao>
           <ButtonBox>
-            <Button>
+            <Button onClick={addToCart}>
               {`Adicionar ao carrinho`} - {formatPrice(food.preco)}
             </Button>
           </ButtonBox>
