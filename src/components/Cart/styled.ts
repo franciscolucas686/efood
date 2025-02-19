@@ -32,9 +32,11 @@ export const Sidebar = styled.aside`
   z-index: 1;
   padding: 0 8px;
   width: 360px;
+  display: block;
 `
 
 export const ButtonSquare = styled(Button)`
+  margin-bottom: 8px;
   &.full-width {
     width: 100%;
   }
@@ -76,7 +78,6 @@ export const Title = styled.h3`
 `
 
 export const Prices = styled.p`
-  display: flex;
   justify-content: space-between;
   color: ${cores.branca};
   margin-top: 8px;
