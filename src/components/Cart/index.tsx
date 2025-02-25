@@ -10,22 +10,17 @@ import {
 } from './styled'
 import { RootReducer } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
-import { close, remove } from '../../store/cart'
+import { close, remove, selectTotalPrice } from '../../store/cart'
 import { formatPrice } from '../FoodList'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const totalPrice = useSelector(selectTotalPrice)
 
   const dispatch = useDispatch()
 
   const closeCart = () => {
     dispatch(close())
-  }
-
-  const getTotalPrice = () => {
-    return items.reduce((acumulador, valorAtual) => {
-      return (acumulador += valorAtual.preco)
-    }, 0)
   }
 
   const removeFood = (id: number) => {
@@ -49,7 +44,7 @@ const Cart = () => {
           ))}
         </List>
         <Prices>
-          Valor total <span>{formatPrice(getTotalPrice())}</span>
+          Valor total <span>{formatPrice(totalPrice)}</span>
         </Prices>
         <ButtonSquare className="full-width">
           Continuar para a entrega

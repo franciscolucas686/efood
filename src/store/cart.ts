@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit'
 import { CardapioRestaurant } from '../pages/Home'
+import { RootReducer } from '.'
 
 type CartState = {
   items: CardapioRestaurant[]
@@ -35,6 +36,11 @@ const cartSlice = createSlice({
     }
   }
 })
+
+export const selectTotalPrice = createSelector(
+  [(state: RootReducer) => state.cart.items],
+  (items) => items.reduce((total, item) => total + item.preco, 0)
+)
 
 export const { addFood, remove, open, close } = cartSlice.actions
 export default cartSlice.reducer

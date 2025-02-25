@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../style'
 
-export const SidebarTest = styled.aside`
-  background-color: ${cores.rosaEscuro};
-  z-index: 1;
-  padding: 0 8px;
-  width: 360px;
-`
-
 export const Title = styled.h2`
   color: ${cores.rosaClaro};
   font-size: 16px;
