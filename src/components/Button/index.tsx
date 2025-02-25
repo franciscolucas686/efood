@@ -7,6 +7,7 @@ export type Props = {
   onClick?: () => void
   to?: string
   className?: string
+  disabled?: boolean
 }
 
 const Button = ({ title, children, onClick, to, className }: Props) => {

@@ -33,6 +33,9 @@ const cartSlice = createSlice({
     },
     close: (state) => {
       state.isOpen = false
+    },
+    clear: (state) => {
+      state.items = []
     }
   }
 })
@@ -42,5 +45,5 @@ export const selectTotalPrice = createSelector(
   (items) => items.reduce((total, item) => total + item.preco, 0)
 )
 
-export const { addFood, remove, open, close } = cartSlice.actions
+export const { addFood, remove, open, close, clear } = cartSlice.actions
 export default cartSlice.reducer
