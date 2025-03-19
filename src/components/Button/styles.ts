@@ -24,4 +24,8 @@ export const Btn = styled.button`
   text-decoration: none;
   border: 2px solid ${cores.rosaClaro};
   cursor: pointer;
+
+  &.mb-8 {
+    margin-bottom: 8px;
+  }
 `

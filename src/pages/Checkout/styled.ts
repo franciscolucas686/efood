@@ -191,13 +191,15 @@ export const Paragrafo = styled.p`
 
 export const TabButton = styled.div`
   margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
   ${ButtonLink} {
     max-width: 344px;
     width: 100%;
     background-color: ${cores.rosaClaro};
     color: ${cores.rosaEscuro};
-    padding: 4px 0;
-    margin-bottom: 8px;
   }
 `
 

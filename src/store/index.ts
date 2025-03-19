@@ -6,9 +6,12 @@ import cartReducer from './cart'
 
 import modalReducer from './modal'
 
+import checkoutReducer from './checkout'
+
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
+    checkout: checkoutReducer,
     modal: modalReducer,
     [api.reducerPath]: api.reducer
   },

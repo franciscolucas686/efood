@@ -4,10 +4,8 @@ import InputMask from 'react-input-mask'
 import { Navigate, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 
-
 import { usePurchaseMutation } from '../../services/api'
 import { open, selectTotalPrice } from '../../store/cart'
-
 
 import Button from '../../components/Button'
 
@@ -16,7 +14,6 @@ import { RootReducer } from '../../store'
 import { clear } from '../../store/cart'
 import * as S from './styled'
 import { formatPrice } from '../../components/FoodList'
-import { Sidebar } from '../../components/Cart/styled'
 
 const Checkout = ({ onClose }: { onClose: () => void }) => {
   const [payWith, setPayWith] = useState(false)
@@ -175,258 +172,254 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className="container">
       {!isOpenCart && isSuccess && data ? (
-        <Sidebar>
-          <>
-            <S.TitleH3>Pedido realizado - {data.orderId} </S.TitleH3>
-            <S.Paragrafo>
-              Estamos felizes em informar que seu pedido já está em processo de
-              preparação e, em breve, será entregue no endereço fornecido.
-            </S.Paragrafo>
-            <br />
-            <S.Paragrafo>
-              Gostaríamos de ressaltar que nossos entregadores não estão
-              autorizados a realizar cobranças extras.
-            </S.Paragrafo>
-            <br />
-            <S.Paragrafo>
-              Lembre-se da importância de higienizar as mãos após o recebimento
-              do pedido, garantindo assim sua segurança e bem-estar durante a
-              refeição.
-            </S.Paragrafo>
-            <br />
-            <S.Paragrafo>
-              Esperamos que desfrute de uma deliciosa e agradável experiência
-              gastronômica. Bom apetite!
-            </S.Paragrafo>
-            <S.TabButton>
-              <Button title="Concluir" onClick={handleConclude}>
-                Concluir
-              </Button>
-            </S.TabButton>
-          </>
-        </Sidebar>
+        <>
+          <S.TitleH3>Pedido realizado - {data.orderId} </S.TitleH3>
+          <S.Paragrafo>
+            Estamos felizes em informar que seu pedido já está em processo de
+            preparação e, em breve, será entregue no endereço fornecido.
+          </S.Paragrafo>
+          <br />
+          <S.Paragrafo>
+            Gostaríamos de ressaltar que nossos entregadores não estão
+            autorizados a realizar cobranças extras.
+          </S.Paragrafo>
+          <br />
+          <S.Paragrafo>
+            Lembre-se da importância de higienizar as mãos após o recebimento do
+            pedido, garantindo assim sua segurança e bem-estar durante a
+            refeição.
+          </S.Paragrafo>
+          <br />
+          <S.Paragrafo>
+            Esperamos que desfrute de uma deliciosa e agradável experiência
+            gastronômica. Bom apetite!
+          </S.Paragrafo>
+          <S.TabButton>
+            <Button className="mb-8" title="Concluir" onClick={handleConclude}>
+              Concluir
+            </Button>
+          </S.TabButton>
+        </>
       ) : (
-        <Sidebar>
-          <div>
-            {!payWith ? (
+        <div>
+          {!payWith ? (
+            <>
+              <S.Row>
+                <S.TitleH3>Entrega</S.TitleH3>
+                <S.InputGroup>
+                  <label htmlFor="fullName">Quem irá receber</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={form.values.fullName}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError('fullName') ? 'error' : ''}
+                  />
+                </S.InputGroup>
+                <S.InputGroup>
+                  <label htmlFor="endereco">Endereço</label>
+                  <input
+                    type="text"
+                    id="endereco"
+                    name="endereco"
+                    value={form.values.endereco}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError('endereco') ? 'error' : ''}
+                  />
+                </S.InputGroup>
+                <S.InputGroup>
+                  <label htmlFor="cidade">Cidade</label>
+                  <input
+                    type="text"
+                    id="cidade"
+                    name="cidade"
+                    value={form.values.cidade}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError('cidade') ? 'error' : ''}
+                  />
+                </S.InputGroup>
+                <S.InputGroup className="InputFlex">
+                  <div>
+                    <label htmlFor="cep">CEP</label>
+                    <InputMask
+                      type="text"
+                      id="cep"
+                      name="cep"
+                      value={form.values.cep}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('cep') ? 'error' : ''}
+                      mask="99.999-999"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="numero">Número</label>
+                    <input
+                      type="number"
+                      id="numero"
+                      name="numero"
+                      value={form.values.numero}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('numero') ? 'error' : ''}
+                    />
+                  </div>
+                </S.InputGroup>
+                <S.InputGroup>
+                  <label htmlFor="fullComplemento">
+                    Complemento (opcional)
+                  </label>
+                  <input
+                    type="text"
+                    id="fullComplemento"
+                    name="fullComplemento"
+                    value={form.values.fullComplemento}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={
+                      checkInputHasError('fullComplemento') ? 'error' : ''
+                    }
+                  />
+                </S.InputGroup>
+              </S.Row>
+              <S.TabButton>
+                <Button
+                  className="mb-8"
+                  title="Continuar com o pagamento"
+                  onClick={handleContinueToPayment}
+                  disabled={isLoading}
+                >
+                  {isLoading
+                    ? 'Continuar com ...'
+                    : 'Continuar com o pagamento'}
+                </Button>
+                <Button
+                  className="mb-8"
+                  title="Voltar para o carrinho"
+                  onClick={handleVoltar}
+                >
+                  Voltar para o carrinho
+                </Button>
+              </S.TabButton>
+            </>
+          ) : (
+            <form onSubmit={form.handleSubmit}>
               <>
                 <S.Row>
-                  <S.TitleH3>Entrega</S.TitleH3>
-                  <S.InputGroup>
-                    <label htmlFor="fullName">Quem irá receber</label>
+                  <S.TitleH3>
+                    Pagamento - Valor a pagar
+                    <span>{formatPrice(totalPrice)}</span>
+                  </S.TitleH3>
+                  <S.InputGroupPaymentBlock>
+                    <label htmlFor="cardOwner">Nome no cartão</label>
                     <input
                       type="text"
-                      id="fullName"
-                      name="fullName"
-                      value={form.values.fullName}
+                      id="cardOwner"
+                      name="cardOwner"
+                      value={form.values.cardOwner}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
-                      className={checkInputHasError('fullName') ? 'error' : ''}
+                      className={checkInputHasError('cardOwner') ? 'error' : ''}
                     />
-                  </S.InputGroup>
-                  <S.InputGroup>
-                    <label htmlFor="endereco">Endereço</label>
-                    <input
-                      type="text"
-                      id="endereco"
-                      name="endereco"
-                      value={form.values.endereco}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                      className={checkInputHasError('endereco') ? 'error' : ''}
-                    />
-                  </S.InputGroup>
-                  <S.InputGroup>
-                    <label htmlFor="cidade">Cidade</label>
-                    <input
-                      type="text"
-                      id="cidade"
-                      name="cidade"
-                      value={form.values.cidade}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                      className={checkInputHasError('cidade') ? 'error' : ''}
-                    />
-                  </S.InputGroup>
-                  <S.InputGroup className="InputFlex">
-                    <div>
-                      <label htmlFor="cep">CEP</label>
+                  </S.InputGroupPaymentBlock>
+                  <S.InputGroupPaymentFlex className="InputFlexpayment">
+                    <div className="InputNumbCard">
+                      <label htmlFor="numbCard">Número do cartão</label>
                       <InputMask
                         type="text"
-                        id="cep"
-                        name="cep"
-                        value={form.values.cep}
+                        id="numbCard"
+                        name="numbCard"
+                        value={form.values.numbCard}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
-                        className={checkInputHasError('cep') ? 'error' : ''}
-                        mask="99.999-999"
+                        className={
+                          checkInputHasError('numbCard') ? 'error' : ''
+                        }
+                        mask="9999 9999 9999 9999"
+                      />
+                    </div>
+                    <div className="InputCvv">
+                      <label htmlFor="cardCode">CVV</label>
+                      <input
+                        type="text"
+                        id="cardCode"
+                        name="cardCode"
+                        value={form.values.cardCode}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                        className={
+                          checkInputHasError('cardCode') ? 'error' : ''
+                        }
+                        maxLength={3}
+                        pattern="\d{1,3}"
+                      />
+                    </div>
+                  </S.InputGroupPaymentFlex>
+                  <S.InputGroup className="InputFlex">
+                    <div>
+                      <label
+                        className="Label-margin-top"
+                        htmlFor="expiresMonth"
+                      >
+                        Mês
+                      </label>
+                      <InputMask
+                        type="text"
+                        id="expiresMonth"
+                        name="expiresMonth"
+                        value={form.values.expiresMonth}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                        className={
+                          checkInputHasError('expiresMonth') ? 'error' : ''
+                        }
+                        mask="99"
                       />
                     </div>
                     <div>
-                      <label htmlFor="numero">Número</label>
-                      <input
-                        type="number"
-                        id="numero"
-                        name="numero"
-                        value={form.values.numero}
+                      <label className="Label-margin-top" htmlFor="expiresYear">
+                        Ano
+                      </label>
+                      <InputMask
+                        type="text"
+                        id="expiresYear"
+                        name="expiresYear"
+                        value={form.values.expiresYear}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
-                        className={checkInputHasError('numero') ? 'error' : ''}
+                        className={
+                          checkInputHasError('expiresYear') ? 'error' : ''
+                        }
+                        mask="9999"
                       />
                     </div>
-                  </S.InputGroup>
-                  <S.InputGroup>
-                    <label htmlFor="fullComplemento">
-                      Complemento (opcional)
-                    </label>
-                    <input
-                      type="text"
-                      id="fullComplemento"
-                      name="fullComplemento"
-                      value={form.values.fullComplemento}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                      className={
-                        checkInputHasError('fullComplemento') ? 'error' : ''
-                      }
-                    />
                   </S.InputGroup>
                 </S.Row>
                 <S.TabButton>
                   <Button
-                    title="Continuar com o pagamento"
-                    onClick={handleContinueToPayment}
+                    className="mb-8"
+                    title="Finalizar compra"
+                    onClick={form.handleSubmit}
                     disabled={isLoading}
                   >
-                    {isLoading
-                      ? 'Continuar com ...'
-                      : 'Continuar com o pagamento'}
+                    {isLoading ? 'Finalizando compra ...' : 'Finalizar compra'}
                   </Button>
-                  <Button title="Voltar para o carrinho" onClick={handleVoltar}>
-                    Voltar para o carrinho
+                  <Button
+                    className="mb-8"
+                    title="Volta para a edição do endereço"
+                    onClick={() => setPayWith(false)}
+                  >
+                    Voltar para a edição de endereço
                   </Button>
                 </S.TabButton>
               </>
-            ) : (
-              <form onSubmit={form.handleSubmit}>
-                <>
-                  <S.Row>
-                    <S.TitleH3>
-                      Pagamento - Valor a pagar
-                      <span>{formatPrice(totalPrice)}</span>
-                    </S.TitleH3>
-                    <S.InputGroupPaymentBlock>
-                      <label htmlFor="cardOwner">Nome no cartão</label>
-                      <input
-                        type="text"
-                        id="cardOwner"
-                        name="cardOwner"
-                        value={form.values.cardOwner}
-                        onChange={form.handleChange}
-                        onBlur={form.handleBlur}
-                        className={
-                          checkInputHasError('cardOwner') ? 'error' : ''
-                        }
-                      />
-                    </S.InputGroupPaymentBlock>
-                    <S.InputGroupPaymentFlex className="InputFlexpayment">
-                      <div className="InputNumbCard">
-                        <label htmlFor="numbCard">Número do cartão</label>
-                        <InputMask
-                          type="text"
-                          id="numbCard"
-                          name="numbCard"
-                          value={form.values.numbCard}
-                          onChange={form.handleChange}
-                          onBlur={form.handleBlur}
-                          className={
-                            checkInputHasError('numbCard') ? 'error' : ''
-                          }
-                          mask="9999 9999 9999 9999"
-                        />
-                      </div>
-                      <div className="InputCvv">
-                        <label htmlFor="cardCode">CVV</label>
-                        <input
-                          type="text"
-                          id="cardCode"
-                          name="cardCode"
-                          value={form.values.cardCode}
-                          onChange={form.handleChange}
-                          onBlur={form.handleBlur}
-                          className={
-                            checkInputHasError('cardCode') ? 'error' : ''
-                          }
-                          maxLength={3}
-                          pattern="\d{1,3}"
-                        />
-                      </div>
-                    </S.InputGroupPaymentFlex>
-                    <S.InputGroup className="InputFlex">
-                      <div>
-                        <label
-                          className="Label-margin-top"
-                          htmlFor="expiresMonth"
-                        >
-                          Mês
-                        </label>
-                        <InputMask
-                          type="text"
-                          id="expiresMonth"
-                          name="expiresMonth"
-                          value={form.values.expiresMonth}
-                          onChange={form.handleChange}
-                          onBlur={form.handleBlur}
-                          className={
-                            checkInputHasError('expiresMonth') ? 'error' : ''
-                          }
-                          mask="99"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          className="Label-margin-top"
-                          htmlFor="expiresYear"
-                        >
-                          Ano
-                        </label>
-                        <InputMask
-                          type="text"
-                          id="expiresYear"
-                          name="expiresYear"
-                          value={form.values.expiresYear}
-                          onChange={form.handleChange}
-                          onBlur={form.handleBlur}
-                          className={
-                            checkInputHasError('expiresYear') ? 'error' : ''
-                          }
-                          mask="9999"
-                        />
-                      </div>
-                    </S.InputGroup>
-                  </S.Row>
-                  <S.TabButton>
-                    <Button
-                      title="Finalizar compra"
-                      onClick={form.handleSubmit}
-                      disabled={isLoading}
-                    >
-                      {isLoading
-                        ? 'Finalizando compra ...'
-                        : 'Finalizar compra'}
-                    </Button>
-                    <Button
-                      title="Volta para a edição do endereço"
-                      onClick={() => setPayWith(false)}
-                    >
-                      Voltar para a edição de endereço
-                    </Button>
-                  </S.TabButton>
-                </>
-              </form>
-            )}
-          </div>
-        </Sidebar>
+            </form>
+          )}
+        </div>
       )}
     </div>
   )
